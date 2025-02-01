@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Auth Starter Kit
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-First, run the development server:
+A ready-to-use authentication starter template with Next.js, featuring:
+- Magic Link authentication via Auth.js (NextAuth)
+- Prisma ORM with PostgreSQL (Neon)
+- Email sending with Nodemailer
+- Database schema and migrations
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Quick Start
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Prerequisites
+- Node.js v18+
+- PostgreSQL database (Neon recommended)
+- Email service (Mailtrap recommended for development)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/sagar-0208/authjs-prisma-starter.git
+   ```
 
-## Learn More
+2. **Install dependencies**  
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Create .env file**  
+   ```env
+   AUTH_SECRET="run: npx auth secret"
+   DATABASE_URL="postgres://user:pass@neon-hostname/project"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   # Mail configuration (use Mailtrap for development)
+   EMAIL_SERVER_USER="your-mailtrap-user"
+   EMAIL_SERVER_PASSWORD="your-mailtrap-pass"
+   EMAIL_SERVER_HOST="sandbox.smtp.mailtrap.io"
+   EMAIL_SERVER_PORT="2525"
+   EMAIL_FROM="noreply@example.com"
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Initialize database**  
+   ```bash
+   npx prisma db push
+   ```
 
-## Deploy on Vercel
+5. **Start development server**  
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠 Tech Stack
+- **Next.js** - React framework
+- **Auth.js** - Authentication (Magic Link strategy)
+- **Prisma ORM** - Database ORM
+- **Neon** - Serverless PostgreSQL
+- **Nodemailer** - Email sending
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Environment Variables
+
+| Variable         | Description                   |
+| ---------------- | ----------------------------- |
+| `AUTH_SECRET`    | Authentication secret key     |
+| `DATABASE_URL`   | PostgreSQL connection string  |
+| `EMAIL_SERVER_*` | Email service credentials     |
+| `EMAIL_FROM`     | Sender email address          |
+
+## 📚 Documentation
+- [Auth.js Documentation](https://authjs.dev/)
+- [Prisma Documentation](https://www.prisma.io/docs/)
+- [Neon PostgreSQL Guide](https://neon.tech/docs/)
+
+> **Note:** This template uses magic link authentication - users receive a sign-in link via email. Make sure to configure your email provider properly in production.
